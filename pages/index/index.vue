@@ -1,0 +1,50 @@
+<template>
+	<view>
+	      <view class="status_bar">
+	          <!-- 这里是状态栏 -->
+	      </view>
+		  <view class="nav">
+			  <view class="company_name">新启科技 x 安春堂</view>
+			  <view class="product_name">家家送药</view>
+			  <view class="address_location">
+				  <view class="store_name">
+						<text>安春堂大药房万达店</text>
+						<view class="t-icon t-icon-fangchanxinxi"></view>
+				  </view>
+				  <view class="address_name">
+						<view class="t-icon t-icon-dingwei1"></view>
+						<text>万达公馆A座</text>
+				  </view>
+			  </view>
+		  </view>
+		  <view class="search_bar">
+			  <uni-search-bar @confirm="" @input="" />
+			  
+		  </view>
+
+	      <view> 状态栏下的文字 </view>
+	  </view>
+</template>
+
+<!-- <script src="../../static/fonts/iconfont.js"></script>
+ -->
+<script>
+	export default {
+		data() {
+			return {
+				
+			}
+		},
+		methods: {
+			
+		}
+	}
+</script>
+
+<style>
+
+.status_bar {
+      height: var(--status-bar-height);
+      width: 100%;
+  }
+</style>
