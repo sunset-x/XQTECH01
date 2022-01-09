@@ -136,7 +136,14 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -230,11 +237,89 @@ var _default =
 {
   data: function data() {
     return {
-      banner: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'] };
+      banner: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
+      category: [
+      {
+        img: '1.jpg',
+        name: '感冒发烧' },
+
+      {
+        img: '2.jpg',
+        name: '清热解毒' },
+
+      {
+        img: '3.jpg',
+        name: '肠胃用药' },
+
+      {
+        img: '4.png',
+        name: '儿童用药' },
+
+      {
+        img: '5.png',
+        name: '甜美风' },
+
+      {
+        img: '6.jpg',
+        name: '鱼尾裙' },
+
+      {
+        img: '7.jpg',
+        name: '相机配件' },
+
+      {
+        img: '8.jpg',
+        name: '护肤套装' },
+
+      {
+        img: '9.jpg',
+        name: '单肩包' },
+
+      {
+        img: '10.jpg',
+        name: '卫衣' }] };
+
+
 
 
   },
-  methods: {} };exports.default = _default;
+  methods: {
+    classify: function classify() {
+      console.log('classif');
+      uni.navigateTo({
+        url: '/pages/search/search',
+        success: function success(res) {
+          console.log(res);
+        },
+        fail: function fail(err) {
+          console.log(err);
+        } });
+
+    },
+
+    more: function more(e) {
+      console.log('hi-more');
+      // let key = e.currentTarget.dataset.key || '';
+      // uni.navigateTo({
+      // 	// url: 'pages/mine/mine?searchKey=' + key
+      // 	url: 'pages/mine/mine'
+      // });
+
+      // uni.navigateTo({
+      // 	url: '../mine/mine',
+      // 	success: function(res) {
+      // 	    // 通过eventChannel向被打开页面传送数据
+      // 	    // res.eventChannel.emit('acceptDataFromOpenerPage', { data: 'data from starter page' })
+      // 		console.log('ee')
+      // 	  }
+      // });
+
+      console.debug();
+      uni.redirectTo({
+        url: '/pages/search/search' });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 /* 18 */

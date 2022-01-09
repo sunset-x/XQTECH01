@@ -70,10 +70,17 @@
 		  
 		  
 		  
-		  <view class="xui-product-category">
-			  
+		  <view class="tui-product-category">
+		  	<view class="tui-category-item" v-for="(item, index) in category" :key="index" :data-key="item.name" @click="more">
+		  		<image :src="'/static/images/category/' + item.img" class="tui-category-img" mode="scaleToFill"></image>
+		  		<view class="tui-category-name">{{ item.name }}</view>
+		  	</view>
 		  </view>
 		  
+		  <view class="xui-promotion-box">
+			  <image src="../../static/images/banner/promotion0.jpg" mode="scaleToFill"></image>
+			  
+		  </view>
 		  <view class="xui-product-box">
 			  
 		  </view>
@@ -92,11 +99,88 @@
 	export default {
 		data() {
 			return {
-				banner:['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg']
+				banner:['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
+				category: [
+					{
+						img: '1.jpg',
+						name: '感冒发烧'
+					},
+					{
+						img: '2.jpg',
+						name: '清热解毒'
+					},
+					{
+						img: '3.jpg',
+						name: '肠胃用药'
+					},
+					{
+						img: '4.png',
+						name: '儿童用药'
+					},
+					{
+						img: '5.png',
+						name: '甜美风'
+					},
+					{
+						img: '6.jpg',
+						name: '鱼尾裙'
+					},
+					{
+						img: '7.jpg',
+						name: '相机配件'
+					},
+					{
+						img: '8.jpg',
+						name: '护肤套装'
+					},
+					{
+						img: '9.jpg',
+						name: '单肩包'
+					},
+					{
+						img: '10.jpg',
+						name: '卫衣'
+					}
+				],
 				
 			}
 		},
 		methods: {
+			classify: function() {
+				console.log('classif')
+				uni.navigateTo({
+					url: '/pages/search/search',
+					success(res) {
+						console.log(res);
+					},
+					fail(err) {
+						console.log(err);
+					}
+				});
+			},
+			
+			more: function(e) {
+				console.log('hi-more')
+				// let key = e.currentTarget.dataset.key || '';
+				// uni.navigateTo({
+				// 	// url: 'pages/mine/mine?searchKey=' + key
+				// 	url: 'pages/mine/mine'
+				// });
+				
+				// uni.navigateTo({
+				// 	url: '../mine/mine',
+				// 	success: function(res) {
+				// 	    // 通过eventChannel向被打开页面传送数据
+				// 	    // res.eventChannel.emit('acceptDataFromOpenerPage', { data: 'data from starter page' })
+				// 		console.log('ee')
+				// 	  }
+				// });
+				
+				console.debug()
+				uni.redirectTo({
+				    url: '/pages/search/search'
+				});
+			},
 			
 		}
 	}
@@ -262,4 +346,56 @@
 	height: 240rpx;
 	display: block;
 }
+
+
+// category
+.tui-product-category {
+	background-color: #fff;
+	padding: 80rpx 20rpx 30rpx 20rpx;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	font-size: 24rpx;
+	color: #555;
+	margin-bottom: 20rpx;
+}
+
+.tui-category-item {
+	width: 20%;
+	height: 118rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-direction: column;
+	padding-top: 30rpx;
+}
+
+.tui-category-img {
+	height: 80rpx;
+	width: 80rpx;
+	display: block;
+}
+
+.tui-category-name {
+	line-height: 24rpx;
+}
+
+//
+.xui-promotion-box{
+	display: block;
+	margin: 0 20px;
+	background-color: blue;
+	display: block;
+	
+	image{
+		width: 100%;
+		max-height: 70px;
+		text-align: center;
+		border: 1px solid red;
+	}
+}
+
+
 </style>
