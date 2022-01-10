@@ -136,7 +136,36 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 34));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};} //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -238,52 +267,32 @@ var _default =
   data: function data() {
     return {
       banner: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
-      category: [
-      {
-        img: '1.jpg',
-        name: '感冒发烧' },
-
-      {
-        img: '2.jpg',
-        name: '清热解毒' },
-
-      {
-        img: '3.jpg',
-        name: '肠胃用药' },
-
-      {
-        img: '4.png',
-        name: '儿童用药' },
-
-      {
-        img: '5.png',
-        name: '甜美风' },
-
-      {
-        img: '6.jpg',
-        name: '鱼尾裙' },
-
-      {
-        img: '7.jpg',
-        name: '相机配件' },
-
-      {
-        img: '8.jpg',
-        name: '护肤套装' },
-
-      {
-        img: '9.jpg',
-        name: '单肩包' },
-
-      {
-        img: '10.jpg',
-        name: '卫衣' }] };
-
-
+      category: [],
+      goodsList: [] };
 
 
   },
+  onLoad: function onLoad() {
+    this.loadData();
+  },
   methods: {
+    /**
+              * 请求静态数据只是为了代码不那么乱
+              * 分次请求未作整合
+              */
+    loadData: function loadData() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var goodsList;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+
+
+
+
+
+                  _this.$api.json('categoryList'));case 2:_this.category = _context.sent;
+                console.log(_this.category);_context.next = 6;return (
+                  _this.$api.json('goodsList'));case 6:goodsList = _context.sent;
+                _this.goodsList = goodsList || [];case 8:case "end":return _context.stop();}}}, _callee);}))();
+    },
+
+
     classify: function classify() {
       console.log('classif');
       uni.navigateTo({

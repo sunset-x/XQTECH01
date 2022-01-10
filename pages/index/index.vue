@@ -12,7 +12,10 @@
 				  <view class="t-icon t-icon-guanzhu"></view>
 				  <text>安春堂</text>
 			  </view>
-			  <view class="app_name">家家送药</view>
+			  <view class="app_name">
+				    <!-- 家家送药 -->
+					<image src="../../static/images/logo1.png" mode="heightFix" ></image>
+			  </view>
 			  <view class="address_location">
 				  <view class="store_name">
 						<text>安春堂大药房万达店</text>
@@ -81,6 +84,32 @@
 			  <image src="../../static/images/banner/promotion0.jpg" mode="scaleToFill"></image>
 			  
 		  </view>
+		  
+		  <!-- 秒杀楼层 -->
+		  <view class="seckill-section m-t">
+		  	<view class="s-header">
+		  		<image class="s-img" src="/static/images/index/secskill-img.jpg" mode="widthFix"></image>
+		  		<text class="tip">距结束</text>
+		  		<text class="hour timer">01</text>
+		  		<text class="minute timer">13</text>
+		  		<text class="second timer">55</text>
+		  		<text class="yticon icon-you"></text>
+		  	</view>
+		  	<scroll-view class="floor-list" scroll-x>
+		  		<view class="scoll-wrapper">
+		  			<view 
+		  				v-for="(item, index) in goodsList" :key="index"
+		  				class="floor-item"
+		  				@click="navToDetailPage(item)"
+		  			>
+		  				<image :src="item.image" mode="aspectFill"></image>
+		  				<text class="title clamp">{{item.title}}</text>
+		  				<text class="price">￥{{item.price}}</text>
+		  			</view>
+		  		</view>
+		  	</scroll-view>
+		  </view>
+		  
 		  <view class="xui-product-box">
 			  
 		  </view>
@@ -100,52 +129,32 @@
 		data() {
 			return {
 				banner:['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
-				category: [
-					{
-						img: '1.jpg',
-						name: '感冒发烧'
-					},
-					{
-						img: '2.jpg',
-						name: '清热解毒'
-					},
-					{
-						img: '3.jpg',
-						name: '肠胃用药'
-					},
-					{
-						img: '4.png',
-						name: '儿童用药'
-					},
-					{
-						img: '5.png',
-						name: '甜美风'
-					},
-					{
-						img: '6.jpg',
-						name: '鱼尾裙'
-					},
-					{
-						img: '7.jpg',
-						name: '相机配件'
-					},
-					{
-						img: '8.jpg',
-						name: '护肤套装'
-					},
-					{
-						img: '9.jpg',
-						name: '单肩包'
-					},
-					{
-						img: '10.jpg',
-						name: '卫衣'
-					}
-				],
+				category: [],
+				goodsList: []
 				
 			}
 		},
+		onLoad() {
+			this.loadData();
+		},
 		methods: {
+			/**
+			 * 请求静态数据只是为了代码不那么乱
+			 * 分次请求未作整合
+			 */
+			async loadData() {
+				// let carouselList = await this.$api.json('carouselList');
+				// this.titleNViewBackground = carouselList[0].background;
+				// this.swiperLength = carouselList.length;
+				// this.carouselList = carouselList;
+				
+				this.category = await this.$api.json('categoryList');
+				console.log(this.category)
+				let goodsList = await this.$api.json('goodsList');
+				this.goodsList = goodsList || [];
+			},
+			
+			
 			classify: function() {
 				console.log('classif')
 				uni.navigateTo({
@@ -219,6 +228,10 @@
 		font-size:55rpx;
 		font-family: SERIF;
 		padding: 10rpx 0;
+		image{
+			max-height: 60rpx;
+		}
+		// max-height: 30px;
 	}
 	.address_location{
 		display: flex;
@@ -396,6 +409,99 @@
 		border: 1px solid red;
 	}
 }
+
+/* 秒杀专区 */
+.seckill-section{
+	padding: 4upx 40upx 24upx;
+	background: #fff;
+	.s-header{
+		display:flex;
+		align-items:center;
+		height: 92upx;
+		line-height: 1;
+		.s-img{
+			width: 140upx;
+			height: 30upx;
+		}
+		.tip{
+			font-size: $font-base;
+			color: $font-color-light;
+			margin: 0 20upx 0 40upx;
+		}
+		.timer{
+			display:inline-block;
+			width: 40upx;
+			height: 36upx;
+			text-align:center;
+			line-height: 36upx;
+			margin-right: 14upx;
+			font-size: $font-sm+2upx;
+			color: #fff;
+			border-radius: 2px;
+			background: rgba(0,0,0,.8);
+		}
+		.icon-you{
+			font-size: $font-lg;
+			color: $font-color-light;
+			flex: 1;
+			text-align: right;
+		}
+	}
+	.floor-list{
+		white-space: nowrap;
+	}
+	.scoll-wrapper{
+		display:flex;
+		align-items: flex-start;
+	}
+	.floor-item{
+		width: 150upx;
+		margin-right: 20upx;
+		font-size: $font-sm+2upx;
+		color: $font-color-dark;
+		line-height: 1.8;
+		image{
+			width: 100upx;
+			height: 100upx;
+			border-radius: 6upx;
+		}
+		.price{
+			color: $uni-color-primary;
+		}
+	}
+}
+// 
+// .f-header{
+// 	display:flex;
+// 	align-items:center;
+// 	height: 140upx;
+// 	padding: 6upx 30upx 8upx;
+// 	background: #fff;
+// 	image{
+// 		flex-shrink: 0;
+// 		width: 80upx;
+// 		height: 80upx;
+// 		margin-right: 20upx;
+// 	}
+// 	.tit-box{
+// 		flex: 1;
+// 		display: flex;
+// 		flex-direction: column;
+// 	}
+// 	.tit{
+// 		font-size: $font-lg +2upx;
+// 		color: #font-color-dark;
+// 		line-height: 1.3;
+// 	}
+// 	.tit2{
+// 		font-size: $font-sm;
+// 		color: $font-color-light;
+// 	}
+// 	.icon-you{
+// 		font-size: $font-lg +2upx;
+// 		color: $font-color-light;
+// 	}
+// }
 
 
 </style>
