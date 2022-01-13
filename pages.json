@@ -28,7 +28,16 @@
                 "enablePullDownRefresh": false
             }
             
-        }
+        },
+		{
+		    "path" : "pages/cart/cart",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		}
     ],
 	"tabBar":{
 		"color":"#000000",
