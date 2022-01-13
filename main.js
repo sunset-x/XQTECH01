@@ -1,4 +1,5 @@
 import App from './App'
+import TestData from './testData.js'
 
 // #ifndef VUE3
 import Vue from 'vue'
@@ -19,3 +20,18 @@ export function createApp() {
   }
 }
 // #endif
+
+const msg = null
+const prePage = null
+
+const json = type=>{
+	//模拟异步请求数据
+	return new Promise(resolve=>{
+		setTimeout(()=>{
+			resolve(TestData[type]);
+		}, 500)
+	})
+}
+// Vue.prototype.$fire = new Vue();
+// Vue.prototype.$store = store;
+Vue.prototype.$api = {msg, json, prePage};
